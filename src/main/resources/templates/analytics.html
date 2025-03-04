@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Analytics Dashboard</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Analytics Dashboard</h1>
+      <nav>
+        <ul>
+          <li><a th:href="@{/dashboard}">Dashboard</a></li>
+          <li><a th:href="@{/slots}">Parking Slots</a></li>
+          <li><a th:href="@{/operators}">Operators</a></li>
+          <li><a th:href="@{/shifts}">Shifts</a></li>
+          <li><a th:href="@{/rates}">Rates</a></li>
+          <li><a th:href="@{/reports}">Reports</a></li>
+          <li><a th:href="@{/analytics}" class="active">Analytics</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-header">
+        <h2>Analytics Overview</h2>
+        <div class="action-buttons">
+          <button class="btn primary">Export Data</button>
+          <button class="btn secondary">Print Report</button>
+        </div>
+      </section>
+
+      <section class="analytics-filters">
+        <h3>Data Filters</h3>
+        <div class="filter-form">
+          <div class="form-group">
+            <label for="timeRange">Time Range</label>
+            <select id="timeRange">
+              <option value="today">Today</option>
+              <option value="week">This Week</option>
+              <option value="month" selected>This Month</option>
+              <option value="quarter">This Quarter</option>
+              <option value="year">This Year</option>
+              <option value="custom">Custom Range</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="vehicleType">Vehicle Type</label>
+            <select id="vehicleType">
+              <option value="all" selected>All Types</option>
+              <option value="car">Car</option>
+              <option value="motorcycle">Motorcycle</option>
+              <option value="truck">Truck</option>
+            </select>
+          </div>
+          <button class="btn primary">Apply Filters</button>
+        </div>
+      </section>
+
+      <section class="analytics-charts">
+        <div class="chart-container">
+          <h3>Monthly Revenue</h3>
+          <div class="chart revenue-chart">
+            <!-- Chart will be rendered here by JavaScript -->
+            <div class="chart-placeholder">
+              <div class="bar-chart">
+                <div class="bar" style="height: 60%">Jan</div>
+                <div class="bar" style="height: 75%">Feb</div>
+                <div class="bar" style="height: 90%">Mar</div>
+                <div class="bar" style="height: 65%">Apr</div>
+                <div class="bar" style="height: 80%">May</div>
+                <div class="bar" style="height: 70%">Jun</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-container">
+          <h3>Vehicle Distribution</h3>
+          <div class="chart pie-chart">
+            <!-- Chart will be rendered here by JavaScript -->
+            <div class="chart-placeholder">
+              <div class="pie-chart-placeholder">
+                <div
+                  class="pie-segment"
+                  style="transform: rotate(0deg); background-color: #1a5f7a"
+                ></div>
+                <div
+                  class="pie-segment"
+                  style="transform: rotate(120deg); background-color: #2c88a0"
+                ></div>
+                <div
+                  class="pie-segment"
+                  style="transform: rotate(240deg); background-color: #57c4e5"
+                ></div>
+                <div class="pie-label">Cars: 65%</div>
+                <div class="pie-label">Motorcycles: 30%</div>
+                <div class="pie-label">Trucks: 5%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-container">
+          <h3>Peak Hours</h3>
+          <div class="chart line-chart">
+            <!-- Chart will be rendered here by JavaScript -->
+            <div class="chart-placeholder">
+              <div class="line-chart-placeholder">
+                <div class="line-point" style="left: 10%; bottom: 20%"></div>
+                <div class="line-point" style="left: 25%; bottom: 60%"></div>
+                <div class="line-point" style="left: 40%; bottom: 80%"></div>
+                <div class="line-point" style="left: 55%; bottom: 40%"></div>
+                <div class="line-point" style="left: 70%; bottom: 30%"></div>
+                <div class="line-point" style="left: 85%; bottom: 50%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-container">
+          <h3>Occupancy Rate</h3>
+          <div class="chart gauge-chart">
+            <!-- Chart will be rendered here by JavaScript -->
+            <div class="chart-placeholder">
+              <div class="gauge-chart-placeholder">
+                <div class="gauge-dial" style="transform: rotate(120deg)"></div>
+                <div class="gauge-value">75%</div>
+                <div class="gauge-label">Average Occupancy</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="analytics-insights">
+        <h2>Key Insights</h2>
+        <div class="insights-grid">
+          <div class="insight-card">
+            <h3>Peak Traffic Time</h3>
+            <p class="insight-value">08:00 - 09:00</p>
+            <p class="insight-detail">
+              Morning rush hour shows highest entry rate
+            </p>
+          </div>
+          <div class="insight-card">
+            <h3>Average Parking Duration</h3>
+            <p class="insight-value">3.5 hours</p>
+            <p class="insight-detail">Increased by 15% from last month</p>
+          </div>
+          <div class="insight-card">
+            <h3>Most Common Vehicle</h3>
+            <p class="insight-value">Cars (65%)</p>
+            <p class="insight-detail">Followed by motorcycles (30%)</p>
+          </div>
+          <div class="insight-card">
+            <h3>Revenue Trend</h3>
+            <p class="insight-value">+12% MoM</p>
+            <p class="insight-detail">
+              Consistent growth for 3 consecutive months
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Parking System. All rights reserved.</p>
+    </footer>
+
+    <script src="/js/scripts.js"></script>
+  </body>
+</html>

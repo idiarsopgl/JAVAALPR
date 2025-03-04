@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Vehicle Entry</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Vehicle Entry</h1>
+        <nav>
+            <ul>
+                <li><a th:href="@{/dashboard}">Dashboard</a></li>
+                <li><a th:href="@{/slots}">Parking Slots</a></li>
+                <li><a th:href="@{/operators}">Operators</a></li>
+                <li><a th:href="@{/shifts}">Shifts</a></li>
+                <li><a th:href="@{/rates}">Rates</a></li>
+                <li><a th:href="@{/reports}">Reports</a></li>
+                <li><a th:href="@{/analytics}">Analytics</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <h2>Register Vehicle Entry</h2>
+            <div class="action-buttons">
+                <button class="btn secondary">Manual Entry</button>
+            </div>
+        </section>
+
+        <section class="vehicle-entry-container">
+            <div class="camera-feed">
+                <h3>Camera Feed</h3>
+                <div class="camera-placeholder">
+                    <img src="/images/camera-placeholder.jpg" alt="Camera Feed" id="cameraFeed">
+                </div>
+                <div class="camera-controls">
+                    <button class="btn primary" id="captureBtn">Capture Image</button>
+                    <button class="btn secondary" id="refreshBtn">Refresh Feed</button>
+                </div>
+            </div>
+
+            <div class="alpr-result">
+                <h3>License Plate Recognition</h3>
+                <div class="plate-result">
+                    <div class="plate-image">
+                        <img src="/images/plate-placeholder.jpg" alt="License Plate" id="plateImage">
+                    </div>
+                    <div class="plate-data">
+                        <div class="data-item">
+                            <span class="label">Detected Plate:</span>
+                            <span class="value" id="detectedPlate">B 1234 XYZ</span>
+                            <button class="btn small" id="editPlateBtn">Edit</button>
+                        </div>
+                        <div class="data-item">
+                            <span class="label">Confidence:</span>
+                            <span class="value" id="confidence">95%</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="label">Detection Time:</span>
+                            <span class="value" id="detectionTime">0.8 seconds</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="entry-form">
+                <h3>Entry Details</h3>
+                <form id="vehicleEntryForm" action="/api/vehicles/entry" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="licensePlate">License Plate</label>
+                        <input type="text" id="licensePlate" name="licensePlate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="vehicleType">Vehicle Type</label>
+                        <select id="vehicleType" name="vehicleType" required>
+                            <option value="">Select Vehicle Type</option>
+                            <option value="car">Car</option>
+                            <option value="motorcycle">Motorcycle</option>
+                            <option value="truck">Truck</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="parkingSpot">Parking Spot</label>
+                        <select id="parkingSpot" name="parkingSpot" required>
+                            <option value="">Select Parking Spot</option>
+                            <option value="A-01">A-01 (Car | Regular)</option>
+                            <option value="A-03">A-03 (Car | VIP)</option>
+                            <option value="B-01">B-01 (Motorcycle)</option>
+                            <option value="B-03">B-03 (Motorcycle)</option>
+                            <option value="B-04">B-04 (Motorcycle)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="entryTime">Entry Time</label>
+                        <input type="datetime-local" id="entryTime" name="entryTime" required>
+                    </div>
+                    <input type="hidden" id="licensePlateImage" name="licensePlateImage">
+                    <div class="form-actions">
+                        <button type="submit" class="btn primary">Register Entry</button>
+                        <button type="reset" class="btn secondary">Reset</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Parking System. All rights reserved.</p>
+    </footer>
+
+    <script src="/js/scripts.js"></script>
+    <script>
+        // Set current date and time as default for entry time
+        document.addEventListener('DOMContentLoaded', function() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            
+            const formattedDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
+            document.getElementById('entryTime').value = formattedDateTime;
+            
+            // When plate is detected, update the form field
+            document.getElementById('editPlateBtn').addEventListener('click', function() {
+                const detectedPlate = document.getElementById('detectedPlate').textContent;
+                document.getElementById('licensePlate').value = detectedPlate;
+            });
+        });
+    </script>
+</body>
+</html>

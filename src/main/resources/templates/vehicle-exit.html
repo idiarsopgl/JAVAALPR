@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vehicle Exit</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Vehicle Exit</h1>
+      <nav>
+        <ul>
+          <li><a th:href="@{/dashboard}">Dashboard</a></li>
+          <li><a th:href="@{/slots}">Parking Slots</a></li>
+          <li><a th:href="@{/operators}">Operators</a></li>
+          <li><a th:href="@{/shifts}">Shifts</a></li>
+          <li><a th:href="@{/rates}">Rates</a></li>
+          <li><a th:href="@{/reports}">Reports</a></li>
+          <li><a th:href="@{/analytics}">Analytics</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-header">
+        <h2>Register Vehicle Exit</h2>
+        <div class="action-buttons">
+          <button class="btn secondary">Manual Exit</button>
+        </div>
+      </section>
+
+      <section class="vehicle-exit-container">
+        <div class="camera-feed">
+          <h3>Camera Feed</h3>
+          <div class="camera-placeholder">
+            <img
+              src="/images/camera-placeholder.jpg"
+              alt="Camera Feed"
+              id="cameraFeed"
+            />
+          </div>
+          <div class="camera-controls">
+            <button class="btn primary" id="captureBtn">Capture Image</button>
+            <button class="btn secondary" id="refreshBtn">Refresh Feed</button>
+          </div>
+        </div>
+
+        <div class="alpr-result">
+          <h3>License Plate Recognition</h3>
+          <div class="plate-result">
+            <div class="plate-image">
+              <img
+                src="/images/plate-placeholder.jpg"
+                alt="License Plate"
+                id="plateImage"
+              />
+            </div>
+            <div class="plate-data">
+              <div class="data-item">
+                <span class="label">Detected Plate:</span>
+                <span class="value" id="detectedPlate">B 1234 XYZ</span>
+                <button class="btn small" id="searchVehicleBtn">Search</button>
+              </div>
+              <div class="data-item">
+                <span class="label">Confidence:</span>
+                <span class="value" id="confidence">95%</span>
+              </div>
+              <div class="data-item">
+                <span class="label">Detection Time:</span>
+                <span class="value" id="detectionTime">0.8 seconds</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="vehicle-details">
+          <h3>Vehicle Details</h3>
+          <div class="details-container">
+            <div class="detail-item">
+              <span class="label">License Plate:</span>
+              <span class="value" id="licensePlate">B 1234 XYZ</span>
+            </div>
+            <div class="detail-item">
+              <span class="label">Vehicle Type:</span>
+              <span class="value" id="vehicleType">Car</span>
+            </div>
+            <div class="detail-item">
+              <span class="label">Parking Spot:</span>
+              <span class="value" id="parkingSpot">A-02</span>
+            </div>
+            <div class="detail-item">
+              <span class="label">Entry Time:</span>
+              <span class="value" id="entryTime">15/03/2024 08:30</span>
+            </div>
+            <div class="detail-item">
+              <span class="label">Exit Time:</span>
+              <span class="value" id="exitTime">15/03/2024 12:45</span>
+            </div>
+            <div class="detail-item">
+              <span class="label">Duration:</span>
+              <span class="value" id="duration">4 hours 15 minutes</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="payment-details">
+          <h3>Payment Details</h3>
+          <div class="payment-container">
+            <div class="payment-item">
+              <span class="label">Rate Type:</span>
+              <span class="value" id="rateType">Regular</span>
+            </div>
+            <div class="payment-item">
+              <span class="label">First Hour:</span>
+              <span class="value" id="firstHourRate">Rp 5.000</span>
+            </div>
+            <div class="payment-item">
+              <span class="label">Additional Hours:</span>
+              <span class="value" id="additionalHours">3.25 × Rp 3.000</span>
+            </div>
+            <div class="payment-item total">
+              <span class="label">Total Amount:</span>
+              <span class="value" id="totalAmount">Rp 14.750</span>
+            </div>
+          </div>
+          <div class="payment-actions">
+            <button class="btn primary" id="processPaymentBtn">
+              Process Payment
+            </button>
+            <button class="btn secondary" id="printReceiptBtn">
+              Print Receipt
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Parking System. All rights reserved.</p>
+    </footer>
+
+    <script src="/js/scripts.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Set current date and time as default for exit time
+        const now = new Date();
+        const formattedDateTime = now.toLocaleString("id-ID", {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+        document.getElementById("exitTime").textContent = formattedDateTime;
+
+        // Search vehicle by license plate
+        document
+          .getElementById("searchVehicleBtn")
+          .addEventListener("click", function () {
+            const detectedPlate =
+              document.getElementById("detectedPlate").textContent;
+            // In a real application, this would make an AJAX call to search for the vehicle
+            // For now, we'll just update the license plate field
+            document.getElementById("licensePlate").textContent = detectedPlate;
+          });
+      });
+    </script>
+  </body>
+</html>

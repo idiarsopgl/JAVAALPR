@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Parking Slots Management</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Parking Slots Management</h1>
+        <nav>
+            <ul>
+                <li><a th:href="@{/dashboard}">Dashboard</a></li>
+                <li><a th:href="@{/slots}" class="active">Parking Slots</a></li>
+                <li><a th:href="@{/operators}">Operators</a></li>
+                <li><a th:href="@{/shifts}">Shifts</a></li>
+                <li><a th:href="@{/rates}">Rates</a></li>
+                <li><a th:href="@{/reports}">Reports</a></li>
+                <li><a th:href="@{/analytics}">Analytics</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <h2>Parking Slots Overview</h2>
+            <div class="action-buttons">
+                <button class="btn primary">Add New Slot</button>
+                <button class="btn secondary">Print Report</button>
+            </div>
+        </section>
+
+        <section class="slots-grid">
+            <div class="slot-card available">
+                <h3>A-01</h3>
+                <p class="status">Available</p>
+                <p class="details">Car | Regular</p>
+            </div>
+            <div class="slot-card occupied">
+                <h3>A-02</h3>
+                <p class="status">Occupied</p>
+                <p class="details">Car | Regular</p>
+                <p class="vehicle">B 1234 XYZ</p>
+                <p class="time">Since: 08:30</p>
+            </div>
+            <div class="slot-card available">
+                <h3>A-03</h3>
+                <p class="status">Available</p>
+                <p class="details">Car | VIP</p>
+            </div>
+            <div class="slot-card maintenance">
+                <h3>A-04</h3>
+                <p class="status">Maintenance</p>
+                <p class="details">Car | Regular</p>
+            </div>
+            <div class="slot-card available">
+                <h3>B-01</h3>
+                <p class="status">Available</p>
+                <p class="details">Motorcycle</p>
+            </div>
+            <div class="slot-card occupied">
+                <h3>B-02</h3>
+                <p class="status">Occupied</p>
+                <p class="details">Motorcycle</p>
+                <p class="vehicle">D 5678 ABC</p>
+                <p class="time">Since: 09:15</p>
+            </div>
+            <div class="slot-card available">
+                <h3>B-03</h3>
+                <p class="status">Available</p>
+                <p class="details">Motorcycle</p>
+            </div>
+            <div class="slot-card available">
+                <h3>B-04</h3>
+                <p class="status">Available</p>
+                <p class="details">Motorcycle</p>
+            </div>
+        </section>
+
+        <section class="slot-stats">
+            <div class="stat-card">
+                <h3>Total Slots</h3>
+                <p>60</p>
+            </div>
+            <div class="stat-card">
+                <h3>Available</h3>
+                <p>45</p>
+            </div>
+            <div class="stat-card">
+                <h3>Occupied</h3>
+                <p>15</p>
+            </div>
+            <div class="stat-card">
+                <h3>Maintenance</h3>
+                <p>1</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Parking System. All rights reserved.</p>
+    </footer>
+
+    <script src="/js/scripts.js"></script>
+</body>
+</html>

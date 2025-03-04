@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Shifts Management</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Shifts Management</h1>
+        <nav>
+            <ul>
+                <li><a th:href="@{/dashboard}">Dashboard</a></li>
+                <li><a th:href="@{/slots}">Parking Slots</a></li>
+                <li><a th:href="@{/operators}">Operators</a></li>
+                <li><a th:href="@{/shifts}" class="active">Shifts</a></li>
+                <li><a th:href="@{/rates}">Rates</a></li>
+                <li><a th:href="@{/reports}">Reports</a></li>
+                <li><a th:href="@{/analytics}">Analytics</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <h2>Shifts Overview</h2>
+            <div class="action-buttons">
+                <button class="btn primary">Add New Shift</button>
+                <button class="btn secondary">Print Schedule</button>
+            </div>
+        </section>
+
+        <section class="shifts-list">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Shift ID</th>
+                        <th>Name</th>
+                        <th>Time</th>
+                        <th>Operators Assigned</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>SH001</td>
+                        <td>Morning</td>
+                        <td>06:00 - 14:00</td>
+                        <td>2</td>
+                        <td><span class="status-badge active">Active</span></td>
+                        <td>
+                            <button class="btn small">Edit</button>
+                            <button class="btn small info">Assign</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>SH002</td>
+                        <td>Evening</td>
+                        <td>14:00 - 22:00</td>
+                        <td>1</td>
+                        <td><span class="status-badge active">Active</span></td>
+                        <td>
+                            <button class="btn small">Edit</button>
+                            <button class="btn small info">Assign</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>SH003</td>
+                        <td>Night</td>
+                        <td>22:00 - 06:00</td>
+                        <td>1</td>
+                        <td><span class="status-badge active">Active</span></td>
+                        <td>
+                            <button class="btn small">Edit</button>
+                            <button class="btn small info">Assign</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>SH004</td>
+                        <td>Weekend</td>
+                        <td>08:00 - 20:00</td>
+                        <td>0</td>
+                        <td><span class="status-badge inactive">Inactive</span></td>
+                        <td>
+                            <button class="btn small">Edit</button>
+                            <button class="btn small info">Assign</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="weekly-schedule">
+            <h2>Weekly Schedule</h2>
+            <div class="schedule-grid">
+                <div class="day-column">
+                    <h3>Monday</h3>
+                    <div class="shift-block morning">Morning: Budi, Siti</div>
+                    <div class="shift-block evening">Evening: Ahmad</div>
+                    <div class="shift-block night">Night: Rudi</div>
+                </div>
+                <div class="day-column">
+                    <h3>Tuesday</h3>
+                    <div class="shift-block morning">Morning: Budi, Siti</div>
+                    <div class="shift-block evening">Evening: Ahmad</div>
+                    <div class="shift-block night">Night: Rudi</div>
+                </div>
+                <div class="day-column">
+                    <h3>Wednesday</h3>
+                    <div class="shift-block morning">Morning: Budi, Siti</div>
+                    <div class="shift-block evening">Evening: Ahmad</div>
+                    <div class="shift-block night">Night: Rudi</div>
+                </div>
+                <div class="day-column">
+                    <h3>Thursday</h3>
+                    <div class="shift-block morning">Morning: Budi, Siti</div>
+                    <div class="shift-block evening">Evening: Ahmad</div>
+                    <div class="shift-block night">Night: Rudi</div>
+                </div>
+                <div class="day-column">
+                    <h3>Friday</h3>
+                    <div class="shift-block morning">Morning: Budi, Siti</div>
+                    <div class="shift-block evening">Evening: Ahmad</div>
+                    <div class="shift-block night">Night: Rudi</div>
+                </div>
+                <div class="day-column weekend">
+                    <h3>Saturday</h3>
+                    <div class="shift-block weekend">Weekend: Budi, Ahmad</div>
+                </div>
+                <div class="day-column weekend">
+                    <h3>Sunday</h3>
+                    <div class="shift-block weekend">Weekend: Siti, Rudi</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Parking System. All rights reserved.</p>
+    </footer>
+
+    <script src="/js/scripts.js"></script>
+</body>
+</html>

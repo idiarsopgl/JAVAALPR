@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Operators Management</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Operators Management</h1>
+        <nav>
+            <ul>
+                <li><a th:href="@{/dashboard}">Dashboard</a></li>
+                <li><a th:href="@{/slots}">Parking Slots</a></li>
+                <li><a th:href="@{/operators}" class="active">Operators</a></li>
+                <li><a th:href="@{/shifts}">Shifts</a></li>
+                <li><a th:href="@{/rates}">Rates</a></li>
+                <li><a th:href="@{/reports}">Reports</a></li>
+                <li><a th:href="@{/analytics}">Analytics</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <h2>Operators Overview</h2>
+            <div class="action-buttons">
+                <button class="btn primary">Add New Operator</button>
+                <button class="btn secondary">Print Report</button>
+            </div>
+        </section>
+
+        <section class="operators-list">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Status</th>
+                        <th>Current Shift</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>OP001</td>
+                        <td>Budi Santoso</td>
+                        <td>Senior Operator</td>
+                        <td><span class="status-badge active">Active</span></td>
+                        <td>Morning (06:00 - 14:00)</td>
+                        <td>
+                            <button class="btn small">Edit</button>
+                            <button class="btn small danger">Deactivate</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>OP002</td>
+                        <td>Siti Rahayu</td>
+                        <td>Junior Operator</td>
+                        <td><span class="status-badge active">Active</span></td>
+                        <td>Morning (06:00 - 14:00)</td>
+                        <td>
+                            <button class="btn small">Edit</button>
+                            <button class="btn small danger">Deactivate</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>OP003</td>
+                        <td>Ahmad Hidayat</td>
+                        <td>Senior Operator</td>
+                        <td><span class="status-badge active">Active</span></td>
+                        <td>Evening (14:00 - 22:00)</td>
+                        <td>
+                            <button class="btn small">Edit</button>
+                            <button class="btn small danger">Deactivate</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>OP004</td>
+                        <td>Dewi Lestari</td>
+                        <td>Junior Operator</td>
+                        <td><span class="status-badge inactive">Inactive</span></td>
+                        <td>-</td>
+                        <td>
+                            <button class="btn small">Edit</button>
+                            <button class="btn small success">Activate</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="operator-stats">
+            <div class="stat-card">
+                <h3>Total Operators</h3>
+                <p>4</p>
+            </div>
+            <div class="stat-card">
+                <h3>Active</h3>
+                <p>3</p>
+            </div>
+            <div class="stat-card">
+                <h3>On Duty</h3>
+                <p>2</p>
+            </div>
+            <div class="stat-card">
+                <h3>Inactive</h3>
+                <p>1</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Parking System. All rights reserved.</p>
+    </footer>
+
+    <script src="/js/scripts.js"></script>
+</body>
+</html>
