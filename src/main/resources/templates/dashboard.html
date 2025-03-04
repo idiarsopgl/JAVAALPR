@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Parking System Dashboard</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Parking System Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a th:href="@{/dashboard}" class="active">Dashboard</a></li>
+                <li><a th:href="@{/slots}">Parking Slots</a></li>
+                <li><a th:href="@{/operators}">Operators</a></li>
+                <li><a th:href="@{/shifts}">Shifts</a></li>
+                <li><a th:href="@{/rates}">Rates</a></li>
+                <li><a th:href="@{/reports}">Reports</a></li>
+                <li><a th:href="@{/analytics}">Analytics</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="dashboard-stats">
+            <div class="stat-card">
+                <h3>Available Slots</h3>
+                <p th:text="${availableSlots}">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Occupied Slots</h3>
+                <p th:text="${occupiedSlots}">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Total Revenue Today</h3>
+                <p th:text="${todayRevenue}">$0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Active Operators</h3>
+                <p th:text="${activeOperators}">0</p>
+            </div>
+        </section>
+
+        <section class="recent-activity">
+            <h2>Recent Activity</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Vehicle</th>
+                        <th>Action</th>
+                        <th>Operator</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="activity : ${recentActivities}">
+                        <td th:text="${activity.time}"></td>
+                        <td th:text="${activity.vehicle}"></td>
+                        <td th:text="${activity.action}"></td>
+                        <td th:text="${activity.operator}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Parking System. All rights reserved.</p>
+    </footer>
+
+    <script src="/js/scripts.js"></script>
+</body>
+</html>
