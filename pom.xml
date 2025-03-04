@@ -11,7 +11,8 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.2</version>
+        <version>3.4.3</version>
+        <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <properties>
@@ -50,13 +51,6 @@
             <artifactId>hibernate-community-dialects</artifactId>
         </dependency>
 
-        <!-- OpenCV for image processing -->
-        <dependency>
-            <groupId>org.openpnp</groupId>
-            <artifactId>opencv</artifactId>
-            <version>${opencv.version}</version>
-        </dependency>
-
         <!-- Tesseract OCR for license plate recognition -->
         <dependency>
             <groupId>net.sourceforge.tess4j</groupId>
@@ -77,6 +71,11 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+    <groupId>org.opencv</groupId>
+    <artifactId>opencv</artifactId>
+    <version>4.11.0</version>
+</dependency>
     </dependencies>
 
     <build>
